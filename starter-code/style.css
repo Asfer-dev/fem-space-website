@@ -198,9 +198,17 @@ header {
     align-items: center;
 }
 
-@media (min-width: 50em) {
+@media (min-width: 55em) {
     .top-nav {
         width: max(60%, 550px);
+    }
+    header::after {
+        content: '';
+        background: var(--clr-neutral-300);
+        position: absolute;
+        width: 35%;
+        height: 1px;
+        left: 125px;
     }
 
     header::before {
@@ -238,7 +246,7 @@ header {
     display: none;
 }
 
-@media (max-width: 50em) {
+@media (max-width: 55em) {
     .nav-toggle {
         display: block;
     }
