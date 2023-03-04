@@ -8,6 +8,7 @@
     --clr-primary-400: #9a9ea7;
 
     --clr-neutral-300: grey;
+    --clr-neutral-400: #343740;
 
     --fs-300: 0.875rem;
     --fs-400: 1rem;
@@ -330,10 +331,10 @@ header {
     border-bottom: 3px solid #fff;
 }
 
-.planet-details[data-visible='true'] {
+.tab-content[data-visible='true'] {
     display: block;
 }
-.planet-details[data-visible='false'] {
+.tab-content[data-visible='false'] {
     display: none;
 }
 
@@ -385,6 +386,21 @@ hr {
     margin-top: 3rem;
     margin-bottom: 1.5rem;
     width: 90%;
+}
+
+/* Crew Page */
+
+.btn-crew {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    border: none;
+    background: var(--clr-neutral-400);
+    border-radius: 100%;
+    margin: 4rem 0.7rem;
+}
+.btn-crew[data-active] {
+    background: #fff;
 }
 
 

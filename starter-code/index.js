@@ -16,27 +16,28 @@ navToggle.addEventListener('click', function() {
     }
 });
 
-
 // Destination Page
-const btnPlanet = document.querySelectorAll('.btn-planet');
-const planetDetails = document.querySelectorAll('.planet-details');
-const imgPlanet = document.querySelector('#img-planet');
+const btnTab = document.querySelectorAll('.btn-tab');
+const tabContent = document.querySelectorAll('.tab-content');
+const imgTab = document.querySelector('#img-tab');
 
-btnPlanet.forEach((btn) => {
+
+// Tabs
+btnTab.forEach((btn) => {
     btn.addEventListener('click', function() {
 
-        planetDetails.forEach((detail) => {
+        tabContent.forEach((detail) => {
             detail.setAttribute('data-visible', 'false');
         });
 
-        btnPlanet.forEach(btn => {
+        btnTab.forEach(btn => {
             btn.removeAttribute('data-active');
         });
         btn.setAttribute('data-active', 'true');
 
-        const selectedDetail = document.querySelector('#details-' + btn.id);
-        selectedDetail.setAttribute('data-visible', 'true');
+        const selectedTab = document.querySelector('#details-' + btn.id);
+        selectedTab.setAttribute('data-visible', 'true');
 
-        imgPlanet.src = `assets/destination/image-${btn.id}.png`;
+        imgTab.src = `assets/${btn.getAttribute('data-source')}.png`;
     });
 });
