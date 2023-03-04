@@ -404,6 +404,56 @@ hr {
 }
 
 
+/* Technology Page */
+
+@media(min-width: 50em) {
+    .technology-column {
+        display: flex;
+    }
+}
+
+.numbered-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 4rem 4rem;
+}
+
+.numbered-buttons button {
+    cursor: pointer;
+    height: 70px;
+    width: 70px;
+    border: 1px solid var(--clr-neutral-400);
+    border-radius: 100%;
+    background: none;
+    color: #fff;
+    font-family: var(--ff-heading);
+    font-size: var(--fs-500);
+}
+.numbered-buttons button[data-active] {
+    background: #fff;
+    border-color: #fff;
+    color: #000;
+}
+
+@media(max-width: 50em) {
+    .numbered-buttons {
+        flex-direction: row;
+        padding: 2rem 4rem;
+    }
+
+    .tech-subheading {
+        padding-top: 0;
+    }
+
+    .tech-first {
+        padding-bottom: 5rem;
+    }
+}
+
+
 
 
 
@@ -442,6 +492,7 @@ hr {
 .padding-bottom-200 { padding-bottom: 1rem }
 .padding-top-500 { padding-top: 5rem }
 .padding-top-600 { padding-top: 6rem }
+.padding-top-600-lg { padding-top: 6rem }
 
 .container {
     --max-width: 1110px;
@@ -461,6 +512,8 @@ hr {
     p {
         margin-inline: auto;
     }
+
+    .padding-top-600-lg { padding-top: 1rem }
 }
 
 .even-columns {
@@ -468,8 +521,24 @@ hr {
     gap: 5rem;
 }
 
+.uneven-columns {
+    display: grid;
+    gap: 5rem;
+}
+
+@media(max-width: 50em) {
+    .tech-second {
+        grid-row-start: 1;
+    }
+}
+
 @media (min-width: 50em) {
     .even-columns {
         grid-template-columns: 1fr 1fr;
+    }
+
+    .uneven-columns {
+        grid-template-columns: 3fr 2fr;
+        gap: 0;
     }
 }
