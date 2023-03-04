@@ -6,6 +6,8 @@
     --clr-primary-100: #fff;
     --clr-primary-300: #d3d6f3;
 
+    --clr-neutral-300: grey;
+
     --fs-300: 0.875rem;
     --fs-400: 1rem;
     --fs-500: 1.5rem;
@@ -14,11 +16,11 @@
     --fs-800: 8rem;
     --fs-900: 9rem;
     
-    --fs-heading: var(--fs-800);
+    --fs-heading: var(--fs-600);
     --fs-subheading: var(--fs-500);
     --fs-body: var(--fs-400);
 
-    --fw-thin: 300;
+    --fw-thin: 200;
     --fw-normal: 400;
     --fw-medium: 500;
 
@@ -101,18 +103,44 @@ select {
 /* General Styling */
 
 body {
-    background: url("assets/home/background-home-mobile.jpg");
-    background-position: center;
-    background-size: cover;
-
+    
+    position: relative;
     font-family: var(--ff-body);
     font-size: var(--fs-body);
     color: var(--clr-primary-300);
 }
 
+.home {
+    background: url("assets/home/background-home-mobile.jpg");
+    background-position: center;
+    background-size: cover;
+}
+.destination {
+    background: url("assets/destination/background-destination-mobile.jpg");
+    background-position: center;
+    background-size: cover;
+}
+
+@media (min-width: 30em) {
+    .home {
+        background: url("assets/home/background-home-tablet.jpg");
+        background-position: center;
+        background-size: cover;
+    }
+    .destination {
+        background: url("assets/destination/background-destination-tablet.jpg");
+        background-position: center;
+        background-size: cover;
+    }
+}
 @media (min-width: 50em) {
-    body {
+    .home {
         background: url("assets/home/background-home-desktop.jpg");
+        background-position: center;
+        background-size: cover;
+    }
+    .destination {
+        background: url("assets/destination/background-destination-desktop.jpg");
         background-position: center;
         background-size: cover;
     }
@@ -121,6 +149,30 @@ body {
 b {
     font-weight: bold;
     margin-right: 4px;
+}
+
+a {
+    color: #fff;
+    font-weight: var(--fw-thin);
+    text-decoration: none;
+    letter-spacing: 1px;
+    
+}
+
+
+h1 {
+    color: var(--clr-primary-100);
+    font-size: var(--fs-900);
+    font-family: var(--ff-heading);
+    text-transform: uppercase;
+}
+
+.secondary-heading {
+    font-family: var(--ff-subheading);
+    font-size: var(--fs-500);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: var(--fw-thin);
 }
 
 /* Header */
@@ -134,35 +186,87 @@ header {
 }
 
 .top-nav {
-    background: orange;
+    background: rgba(102, 102, 102, 0.15);
+    backdrop-filter: blur(20px);
     display: flex;
     justify-content: center;
-    width: 55%;
+    align-items: center;
+}
+
+@media (min-width: 50em) {
+    .top-nav {
+        width: max(60%, 550px);
+    }
+
+    header::before {
+        content: '';
+        width: 1.5rem;
+        height: 75px;
+        background: rgba(102, 102, 102, 0.15);
+        backdrop-filter: blur(20px);
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+}
+
+.top-nav[data-visible] {
+    display: flex;
 }
 
 .nav-item {
-    color: #fff;
-    text-decoration: none;
-    letter-spacing: 1px;
-    padding-block: 1rem;
+    /* padding-block: 1.75rem; */
+    height: 75px;
     margin-inline: 2rem;
-    border-bottom: 3px solid orange;
+    display: flex;
+    align-items: center;
+    border-bottom: 3px solid transparent;
 }
 .nav-item:hover {
     border-bottom: 3px solid #fff;
 }
 
+
 .nav-toggle {
     background: none;
     border: none;
-}
-
-.nav-toggle[aria-hidden="true"],
-.nav-toggle img[aria-hidden="true"] {
+    cursor: pointer;
     display: none;
 }
 
-.details {
+@media (max-width: 50em) {
+    .nav-toggle {
+        display: block;
+    }
+    
+    #icon-hamburger[data-visible="true"],
+    #icon-close[data-visible="true"] {
+        display: block;
+    }
+    #icon-hamburger[data-visible="false"],
+    #icon-close[data-visible="false"] {
+        display: none;
+    }
+
+    .top-nav {
+        display: none;
+
+        position: absolute;
+        flex-direction: column;
+        align-items: center;
+        inset: 7rem 10% auto;
+        padding-block: 2rem;
+        background: #0b0d19;
+        box-shadow: 0 0 10px 5px rgba(14, 14, 14, 0.3);
+    }
+    .top-nav[data-visible] {
+        display: flex;
+    }
+
+    
+}
+
+p {
     line-height: 1.7;
     max-width: 440px;
     text-align: justify;
@@ -178,14 +282,117 @@ header {
 
 .explore-circle {
     background: #fff;
-    color: #000;
-    font-size: 2rem;
     height: 250px;
     width: 250px;
     border-radius: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.explore-circle a {
+    color: #000;
+    font-size: 2rem;
+}
+
+@media (max-width: 50em) {
+    .explore-circle {
+        margin-bottom: 5rem;
+    }
+}
+
+
+/* Destination Page */
+
+.section-counter {
+    color: var(--clr-neutral-300);
+    font-weight: bold;
+    margin-right: 1rem;
+}
+
+/* Planet Details Section */
+
+.planets {
+    margin-top: 5rem;
+}
+
+.btn-planet {
+    cursor: pointer;
+    border: none;
+    background: none;
+    text-transform: uppercase;
+    color: #fff;
+    font-weight: var(--fw-thin);
+    font-size: 1rem;
+    padding-block: 0.5rem;
+    margin-inline: 1rem;
+    letter-spacing: 3px;
+    border-bottom: 3px solid transparent;
+}
+.btn-planet:hover {
+    border-bottom: 3px solid #fff;
+}
+.btn-planet[data-active='true'] {
+    border-bottom: 3px solid #fff;
+}
+
+.planet-heading {
+    font-size: var(--fs-600);
+}
+
+.planet-details[data-visible='true'] {
+    display: block;
+}
+.planet-details[data-visible='false'] {
+    display: none;
+}
+
+.info-wrapper {
+    display: flex;
+    gap: 5rem;
+}
+
+.info h3 {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 100;
+    font-size: var(--fs-300);
+}
+
+.info p {
+    font-size: 1.75rem;
+    font-family: var(--ff-heading);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 300;
+}
+
+@media(max-width: 50em) {
+    .info-wrapper {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 5rem;
+    }
+
+    .btn-planet {
+        margin-inline: 0.5rem;
+    }
+
+    .planet-heading {
+        margin-top: 2rem;
+    }
+}
+
+
+
+hr {
+    border: none;
+    height: 1px;
+    background:rgba(151, 151, 151, 0.3);
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+    width: 90%;
 }
 
 
@@ -219,6 +426,9 @@ header {
 .letter-spacing-3 {letter-spacing: 3px}
 .text-uppercase {text-transform: uppercase}
 
+.padding-block-4 {padding-block: 4rem;}
+.padding-inline-4 {padding-inline: 4rem;}
+
 .container {
     --max-width: 1110px;
     --padding: 1.5rem;
@@ -226,19 +436,22 @@ header {
     width: min(var(--max-width), 100% - (var(--padding) * 2));
     margin-inline: auto;
 
-    padding-block: 3rem;
+    padding-top: 4rem;
 }
 
 @media (max-width: 50em) {
     .container {
-        text-align: center;
-        
+        text-align: center; 
+    }
+
+    p {
+        margin-inline: auto;
     }
 }
 
 .even-columns {
     display: grid;
-    gap: 1rem;
+    gap: 5rem;
 }
 
 @media (min-width: 50em) {
