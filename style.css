@@ -293,6 +293,7 @@ header {
 }
 
 .explore-circle {
+    position: relative;
     background: #fff;
     height: 250px;
     width: 250px;
@@ -300,6 +301,24 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 2;
+}
+
+.explore-circle::before {
+    content: '';
+    background-color: rgba(255, 255, 255, 0.25);
+    height: 100%;
+    width: 100%;
+    border-radius: 100%;
+    position: absolute;
+    z-index: -2;
+    opacity: 0;
+    transition: transform 750ms ease-in-out, opacity 500ms linear;
+}
+.explore-circle:hover::before,
+.explore-circle:focus::before {
+    transform: scale(1.6);
+    opacity: 1;
 }
 
 .explore-circle a {
